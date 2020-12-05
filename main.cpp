@@ -26,17 +26,17 @@ int main() {
   cout << "====>" << endl;
   string encrypted_message = multiple_bits.cipher(testing_message);
   cout << encrypted_message << endl;
-  cout << "Testing decipher: " << endl;
-  cout << multiple_bits.decipher(encrypted_message) << endl << endl;
+  //cout << "Testing decipher: " << endl;
+  //cout << multiple_bits.decipher(encrypted_message) << endl << endl;
 
   //Now, you are ready to apply the cipher and decipher to the message
-  cout << "Applying cipher to the message from the undo stack:" << endl;
-  cout << message << endl;
-  cout << "Encrpted to:" << endl;
-  encrypted_message = multiple_bits.cipher(message);
-  cout << encrypted_message << endl;
-  cout << "Decrypted back to:" << endl;
-  cout << multiple_bits.decipher(encrypted_message) << endl;
+  //cout << "Applying cipher to the message from the undo stack:" << endl;
+  //cout << message << endl;
+  //cout << "Encrpted to:" << endl;
+  //encrypted_message = multiple_bits.cipher(message);
+  //cout << encrypted_message << endl;
+  //cout << "Decrypted back to:" << endl;
+  //cout << multiple_bits.decipher(encrypted_message) << endl;
 
   return 0;
 
