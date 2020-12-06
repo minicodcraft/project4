@@ -45,6 +45,10 @@ string CaesarCipher::cipher(const string& s){
   return encrypted;
 }
 
+CaesarCipher::~CaesarCipher(){
+  delete []this->key_;
+}
+
 string CaesarCipher::decipher(const string& s){
   string decrypted = "";
   
