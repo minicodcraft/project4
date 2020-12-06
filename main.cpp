@@ -70,7 +70,10 @@ int main() {
     redo.push(undo.top());
     undo.pop();
   }
-  redo.display();
+  for(int loop = 0; loop < undoSize; loop++){
+    message += redo.top();
+    redo.pop();
+  }
 
   //Now, you are ready to apply the cipher and decipher to the message
   cout << "Applying cipher to the message from the undo stack:" << endl;

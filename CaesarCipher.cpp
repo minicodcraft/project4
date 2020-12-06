@@ -18,7 +18,6 @@ CaesarCipher::CaesarCipher(const string& key){
 }
 
 string CaesarCipher::cipher(const string& s){
-  //KSMG RPCHE PS UPG EHIMXLSJB
   string encrypted = "";
   
   int keyLoop = 0;
@@ -47,7 +46,6 @@ string CaesarCipher::cipher(const string& s){
 }
 
 string CaesarCipher::decipher(const string& s){
-  //KSMG RPCHE PS UPG EHIMXLSJB
   string decrypted = "";
   
   int keyLoop = 0;
@@ -55,6 +53,9 @@ string CaesarCipher::decipher(const string& s){
     int index = ALPHABET.find(s[loop]);
     if(s[loop] == ' '){
       decrypted = decrypted + ' ';
+    }
+    else if(s[loop] == '!'){
+      decrypted = decrypted + '!';
     }
     else{
       index -= *(key_ + keyLoop);
