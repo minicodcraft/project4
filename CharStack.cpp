@@ -5,6 +5,7 @@ using namespace std;
 
 CharStack::CharStack(){
   this->top_ = nullptr;
+  this->size_= 0;
 }
 
 CharStack::~CharStack(){
@@ -13,8 +14,12 @@ CharStack::~CharStack(){
     temp = this-> top_->next;
     delete this-> top_;
     this-> top_ = temp;
-
+    size_--;
   }
+}
+
+int CharStack::getSize(){
+  return size_;
 }
 
 bool CharStack::isEmpty() const{
@@ -32,6 +37,7 @@ void CharStack::push(char newLetter){
   temp-> letter = newLetter;
   temp-> next = this->top_;
   this->top_ = temp;
+  size_++;
 }
 
 void CharStack::pop(){
@@ -45,6 +51,7 @@ void CharStack::pop(){
     temp-> next = nullptr;
     free(temp);
   }
+  size_--;
 }
 
 void CharStack::display() const{
@@ -55,8 +62,9 @@ void CharStack::display() const{
   else{
     temp = this->top_;
     while(temp != nullptr){
-      cout << temp-> letter << endl;
+      cout << temp-> letter;
       temp = temp-> next;
     }
   }
+  cout << endl;
 }

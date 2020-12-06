@@ -9,9 +9,8 @@ using namespace std;
 const string CaesarCipher::ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 CaesarCipher::CaesarCipher(const string& key){
-  int arr[key.size()];
-  size_ = key.size();
-  key_ = arr;
+  this->size_ = key.size();
+  key_ = new int[size_];
   for(int loop = 0; loop < size_; loop++){
     char lett = key[loop];
     key_[loop] = (int)lett - 48;
@@ -19,33 +18,56 @@ CaesarCipher::CaesarCipher(const string& key){
 }
 
 string CaesarCipher::cipher(const string& s){
-  cout << "test 1" << endl;
+  //KSMG RPCHE PS UPG EHIMXLSJB
   string encrypted = "";
+  
   int keyLoop = 0;
   for(int loop = 0; loop < s.size(); loop++){
-    cout << "test 2" << endl;
+    int index = ALPHABET.find(s[loop]);
     if(s[loop] == ' '){
       encrypted = encrypted + ' ';
-      cout << "test 7" << endl;
+    }
+    else if(s[loop] == '!'){
+      encrypted = encrypted + '!';
     }
     else{
-      cout << "test 3" << endl;
-      int index = ALPHABET.find(s[loop]);
-      cout << "test 4" << endl;
-      index += this->key_[keyLoop];
-      cout << index << endl;
-      cout << "test 5" << endl;
+      index += *(key_ + keyLoop);
       keyLoop++;
-      if(keyLoop > size_){
+      if(keyLoop >= size_){
         keyLoop = 0;
       }
-      if(index > 25){
-        index = index - 25;
+      if(index >= ALPHABET.size()){
+        index = index - ALPHABET.size();
       }
-      cout << "test 6" << endl;
       encrypted = encrypted + ALPHABET[index];
-      cout << encrypted << endl;
     }
   }
+
   return encrypted;
+}
+
+string CaesarCipher::decipher(const string& s){
+  //KSMG RPCHE PS UPG EHIMXLSJB
+  string decrypted = "";
+  
+  int keyLoop = 0;
+  for(int loop = 0; loop < s.size(); loop++){
+    int index = ALPHABET.find(s[loop]);
+    if(s[loop] == ' '){
+      decrypted = decrypted + ' ';
+    }
+    else{
+      index -= *(key_ + keyLoop);
+      keyLoop++;
+      if(keyLoop >= size_){
+        keyLoop = 0;
+      }
+      if(index >= ALPHABET.size()){
+        index = index + ALPHABET.size();
+      }
+      decrypted = decrypted + ALPHABET[index];
+    }
+  }
+
+  return decrypted;
 }
